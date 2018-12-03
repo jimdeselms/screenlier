@@ -1,0 +1,20 @@
+.test-image-thumbnail {
+    width: 100%;
+    max-width: 100px;
+}
+
+.test-image-state {
+    font-size: x-large;
+}
+
+.test-image-header {
+    margin-left: 10px;
+}
+
+.test-image-thumbnails {
+    margin-left: 60px;
+}
+
+.test-image-error-message {
+    font-family: monospace;
+}

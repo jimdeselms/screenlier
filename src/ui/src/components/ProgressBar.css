@@ -1,0 +1,30 @@
+.progress-bar-container {
+    width: 100px;
+    height: 20px;
+    background-color: lightgrey;
+    position: absolute;
+    display: inline;
+}
+
+.progress-bar-progress {
+    height: 100%;
+    background-color: green;
+}
+
+.progress-bar-success {
+    background-color: green;
+}
+.progress-bar-warn {
+    background-color: yellow;
+}
+.progress-bar-error {
+    background-color: red;
+}
+.progress-bar-wait {
+    background-color: grey;
+}
+
+.progress-bar-nomax {
+    height: 50%;
+    vertical-align: center;
+}

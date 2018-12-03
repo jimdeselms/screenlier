@@ -1,0 +1,380 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Screenlier",
+		"_postman_id": "205da63e-b97a-5f56-6565-deb341ba8e7c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New test run",
+			"request": {
+				"url": "http://localhost:5000/api/v1/testrun/myapp",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put benchmark",
+			"request": {
+				"url": {
+					"raw": "http://localhost:5000/api/v1/benchmark/myapp/this/that?name=testBenchmark",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"benchmark",
+						"myapp",
+						"this",
+						"that"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "testBenchmark",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "this is a test"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get test run",
+			"request": {
+				"url": "http://localhost:5000/api/v1/testrun/1",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get test run summaries",
+			"request": {
+				"url": "http://localhost:5000/api/v1/testrun",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get benchmark",
+			"request": {
+				"url": "http://localhost:5000/images/benchmark/myapp/this/that",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set test run end",
+			"request": {
+				"url": {
+					"raw": "http://localhost:5000/api/v1/testrun/1?complete=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"testrun",
+						"1"
+					],
+					"query": [
+						{
+							"key": "complete",
+							"value": "true"
+						}
+					],
+					"variable": []
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put ref image",
+			"request": {
+				"url": {
+					"raw": "http://localhost:5000/api/v1/refimage/1/this/that?name=testBenchmark",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"refimage",
+						"1",
+						"this",
+						"that"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "testBenchmark",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "This is another test"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put test image",
+			"request": {
+				"url": {
+					"raw": "http://localhost:5000/api/v1/testimage/1/this/that?name=testBenchmark",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"testimage",
+						"1",
+						"this",
+						"that"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "testBenchmark",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "This is another test"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Promote benchmark",
+			"request": {
+				"url": "http://localhost:5000/api/v1/testimage/promote/1/this/that",
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put test image error",
+			"request": {
+				"url": {
+					"raw": "http://localhost:5000/api/v1/testimageerror/1/this/that?name=testBenchmark",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"testimageerror",
+						"1",
+						"this",
+						"that"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "testBenchmark",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Aw crap, what happened?!"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Claim a test image",
+			"request": {
+				"url": "http://localhost:5000/api/v1/testimage/imageclaim/jim",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Mark test success",
+			"request": {
+				"url": "http://localhost:5000/api/v1/testimage/success/1/this/that",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Mark test difference",
+			"request": {
+				"url": "http://localhost:5000/api/v1/testimage/different/1/this/that",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Here is the difference"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Mark test error",
+			"request": {
+				"url": {
+					"raw": "http://localhost:5000/api/v1/testimageerror/1/this/that?name=testFile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"testimageerror",
+						"1",
+						"this",
+						"that"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "testFile",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Oh my gosh. Something went wrong. Dangit."
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
