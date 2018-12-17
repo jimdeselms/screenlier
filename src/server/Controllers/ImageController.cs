@@ -20,7 +20,7 @@ namespace server.Controllers
 
         public ImageController()
         {
-            _repository = new TestRepository(TestRunController._fakeConnectionProvider);
+            _repository = RepositoryFactory.GetTestRepository();
             _repository.EnsureSchema();
         }
 

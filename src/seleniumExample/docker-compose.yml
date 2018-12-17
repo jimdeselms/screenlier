@@ -3,23 +3,29 @@ services:
   firefox:
     image: selenium/node-firefox:3.141.59
     volumes:
-      - /tmp/html:/tmp/html
+      - c:/tmp/html:/tmp/html
     depends_on:
       - hub
     environment:
       HUB_HOST: hub
-
+      NODE_MAX_INSTANCES: 5
+      NODE_MAX_SESSION: 5
 
   chrome:
     image: selenium/node-chrome:3.141.59
     volumes:
-      - /tmp/html:/tmp/html
+      - c:/tmp/html:/tmp/html
     depends_on:
       - hub
     environment:
       HUB_HOST: hub
+      NODE_MAX_INSTANCES: 5
+      NODE_MAX_SESSION: 5
 
   hub:
     image: selenium/hub:3.141.59
     ports:
       - "4444:4444"
+    environment:
+      GRID_TIMEOUT: 240
+      GRID_BROWSER_TIMEOUT: 240

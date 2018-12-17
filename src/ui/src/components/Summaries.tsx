@@ -60,7 +60,7 @@ class Summaries extends React.Component<HomeProps> {
     public componentDidMount() {
         this.props.fetchTestRunSummaries(this.props.match.params.appname);
 
-        this.intervalId = setInterval(() => this.props.fetchTestRunSummaries(this.props.match.params.appname), 5000);
+        this.intervalId = setInterval(() => this.props.fetchTestRunSummaries(this.props.match.params.appname), 10000);
     }
 
     public componentWillUnmount() {

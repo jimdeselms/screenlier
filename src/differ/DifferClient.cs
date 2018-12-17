@@ -8,7 +8,7 @@ namespace Screenly.Differ
 {
     public class DifferClient
     {
-        private static readonly string BASE_URL = System.Environment.GetEnvironmentVariable("BASE_URL") ?? "http://localhost:5000";
+        private static readonly string BASE_URL = System.Environment.GetEnvironmentVariable("SCREENLY_SERVER_BASE_URL") ?? "http://localhost:5000";
         private static readonly string IMAGE_BASE_URL = $"{BASE_URL}/images";
         private static readonly string API_BASE_URL = $"{BASE_URL}/api/v1";
         private readonly HttpClient _client = new HttpClient();

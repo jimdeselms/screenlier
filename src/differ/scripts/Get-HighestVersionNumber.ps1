@@ -1,0 +1,1 @@
+(aws ecr describe-images --repository-name screenly-differ --query "imageDetails[].imageTags[]" | convertfrom-json) | ? { $_.EndsWith('-staging') } | % { [int]($_ -replace '-staging', '') } | sort -descending | select-object -first 1

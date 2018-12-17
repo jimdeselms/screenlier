@@ -1,6 +1,6 @@
 .DS_Store
 bin
 obj
-temporaryDatabase
+sqlite.db
 node_modules
 *.png

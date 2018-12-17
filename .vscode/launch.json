@@ -22,7 +22,7 @@
            "request": "launch",
            "preLaunchTask": "buildexample",
            "program": "${workspaceFolder}/src/seleniumExample/bin/Debug/netcoreapp2.1/Screenly.SeleniumExample.dll",
-           "args": [],
+           "args": ["test", "https://devjdeselms.loc.storefront.vpsvc.com:6788"],
            "cwd": "${workspaceFolder}",
            "stopAtEntry": false,
            "console": "internalConsole"

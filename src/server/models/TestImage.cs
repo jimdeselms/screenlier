@@ -4,21 +4,20 @@ using Newtonsoft.Json.Converters;
 
 namespace Screenly.Server.Models
 {
-    public enum ImageState {
-        Submitted = 0,
-        Running = 1,
-        NoBenchmark = 2,
-        Success = 3,
-        Different = 4,
-        Error = 5,
+    public static class ImageState {
+        public static readonly string Submitted = "Submitted";
+        public static readonly string Running = "Running";
+        public static readonly string NoBenchmark = "NoBenchmark";
+        public static readonly string Success = "Success";
+        public static readonly string Different = "Different";
+        public static readonly string Error = "Error";
     }
 
     public class TestImage
     {
         public string Name { get; set; }
         public string Path { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ImageState State { get; set; }
+        public string State { get; set; }
         public DateTime? CompareStart { get; set; }
         public string Error { get; set; }
     }

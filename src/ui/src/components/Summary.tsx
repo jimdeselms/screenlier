@@ -22,7 +22,6 @@ class Summary extends React.Component<SummaryProps> {
     }
 
     public render() {
-
         let progressBarState: string;
         if (this.props.errorCount > 0 || this.props.differenceCount > 0) {
             progressBarState = 'error';

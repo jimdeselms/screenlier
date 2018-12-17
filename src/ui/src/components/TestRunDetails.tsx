@@ -26,6 +26,7 @@ export interface TestRunDetailsProps {
 interface TestRunDetailsState {
     showSuccess: boolean
     showReferenceImages: boolean
+    showSubmitted: boolean
 }
 
 class TestRunDetails extends React.Component<TestRunDetailsProps, TestRunDetailsState> {
@@ -35,10 +36,12 @@ class TestRunDetails extends React.Component<TestRunDetailsProps, TestRunDetails
         this.state = {
             showSuccess: false,
             showReferenceImages: false,
+            showSubmitted: false,
         }
 
         this.toggleShowSuccess = this.toggleShowSuccess.bind(this);
         this.toggleShowReferenceImages = this.toggleShowReferenceImages.bind(this);
+        this.toggleShowSubmitted = this.toggleShowSubmitted.bind(this);
     }
 
     public render() {
@@ -47,6 +50,7 @@ class TestRunDetails extends React.Component<TestRunDetailsProps, TestRunDetails
                 <div>
                     <div onClick={this.toggleShowSuccess}><input type='checkbox' checked={this.state.showSuccess}/>Show success</div>
                     <div onClick={this.toggleShowReferenceImages}><input type='checkbox' checked={this.state.showReferenceImages}/>Show reference images</div>
+                    <div onClick={this.toggleShowSubmitted}><input type='checkbox' checked={this.state.showSubmitted}/>Show submitted but not evaluated</div>
                     <p>{this.props.name}</p>
                     { this.getTestImages() }
                 </div>
@@ -68,12 +72,18 @@ class TestRunDetails extends React.Component<TestRunDetailsProps, TestRunDetails
         );
     }
 
+    public toggleShowSubmitted() {
+        this.setState(
+            { showSubmitted: !this.state.showSubmitted }
+        );
+    }
+
     private intervalId: any;
 
     public componentDidMount() {
         this.props.fetchTestRunDetails(this.props.match.params.id);
 
-        this.intervalId = setInterval(() => this.props.fetchTestRunDetails(this.props.match.params.id), 5000);
+        this.intervalId = setInterval(() => this.props.fetchTestRunDetails(this.props.match.params.id), 10000);
     }
 
     public componentWillUnmount() {
@@ -87,7 +97,11 @@ class TestRunDetails extends React.Component<TestRunDetailsProps, TestRunDetails
         const images = {};
         this.props.testImages.forEach(ti => {
 
-            if (ti.state !== 'Success' || this.state.showSuccess) {
+            
+            if ((ti.state === 'Success' && this.state.showSuccess)
+                || ((ti.state === 'Submitted' || ti.state === 'Running') && this.state.showSubmitted)
+                || (ti.state !== 'Success' && ti.state !== 'Submitted' && ti.state !== 'Running'))
+            {
                 images[ti.path] = { 
                     path: ti.path, 
                     name: ti.name, 

@@ -12,7 +12,7 @@ namespace Screenly.Tests
         [Fact]
         public void BasicRepoTests()
         {
-            using (var connProvider = new FakeConnectionProvider("basicRepoTests"))
+            using (var connProvider = new SqliteConnectionProvider("basicRepoTests"))
             {
                 var repo = new TestRepository(connProvider);
                 repo.EnsureSchema();
@@ -35,7 +35,7 @@ namespace Screenly.Tests
 
                 Assert.Equal("mytestimage", testRun.TestImages[0].Name);
                 Assert.Equal("/this/that", testRun.TestImages[0].Path);
-                Assert.Equal(ImageState.Submitted, testRun.TestImages[0].State);
+                Assert.Equal("Submitted", testRun.TestImages[0].State);
 
                 var benchmark = repo.GetBenchmark("prod", "/this/that");
                 Assert.Equal(new byte[] { 1, 2, 3, 4 }, benchmark);
@@ -48,7 +48,7 @@ namespace Screenly.Tests
         [Fact]
         public void ClaimTestAndMarkSuccess()
         {
-            using (var connProvider = new FakeConnectionProvider("claimtest"))
+            using (var connProvider = new SqliteConnectionProvider("claimtest"))
             {
                 var repo = new TestRepository(connProvider);
                 repo.EnsureSchema();
@@ -73,14 +73,14 @@ namespace Screenly.Tests
                 Assert.Null(repo.ClaimNextTestImage("test"));
 
                 var testRun = repo.GetTestRun(1);
-                Assert.Equal(ImageState.Success, testRun.TestImages[0].State);
+                Assert.Equal("Submitted", testRun.TestImages[0].State);
             }
         }
 
         [Fact]
         public void ClaimTestAndMarkDifference()
         {
-            using (var connProvider = new FakeConnectionProvider("claimtest"))
+            using (var connProvider = new SqliteConnectionProvider("claimtest"))
             {
                 var repo = new TestRepository(connProvider);
                 repo.EnsureSchema();
@@ -99,7 +99,7 @@ namespace Screenly.Tests
                 Assert.Null(repo.ClaimNextTestImage("test"));
 
                 var testRun = repo.GetTestRun(1);
-                Assert.Equal(ImageState.Different, testRun.TestImages[0].State);
+                Assert.Equal("Different", testRun.TestImages[0].State);
                 
                 var diff = repo.GetDifferenceImage(1, "/this/that");
                 Assert.Equal(new byte[] { 2, 3 }, diff);
@@ -109,7 +109,7 @@ namespace Screenly.Tests
         [Fact]
         public void ClaimTestAndMarkError()
         {
-            using (var connProvider = new FakeConnectionProvider("claimtest"))
+            using (var connProvider = new SqliteConnectionProvider("claimtest"))
             {
                 var repo = new TestRepository(connProvider);
                 repo.EnsureSchema();
@@ -128,7 +128,7 @@ namespace Screenly.Tests
                 Assert.Null(repo.ClaimNextTestImage("test"));
 
                 var testRun = repo.GetTestRun(1);
-                Assert.Equal(ImageState.Error, testRun.TestImages[0].State);
+                Assert.Equal("Error", testRun.TestImages[0].State);
                 Assert.Equal("Something went wrong", testRun.TestImages[0].Error);
             }
         }
@@ -136,7 +136,7 @@ namespace Screenly.Tests
         [Fact]
         public void TestImageWithoutBenchmarkCantBeClaimed()
         {
-            using (var connProvider = new FakeConnectionProvider("claimtest"))
+            using (var connProvider = new SqliteConnectionProvider("claimtest"))
             {
                 var repo = new TestRepository(connProvider);
                 repo.EnsureSchema();
@@ -154,7 +154,7 @@ namespace Screenly.Tests
         [Fact]
         public void DeleteTestRun()
         {
-            using (var connProvider = new FakeConnectionProvider("claimtest"))
+            using (var connProvider = new SqliteConnectionProvider("claimtest"))
             {
                 var repo = new TestRepository(connProvider);
                 repo.EnsureSchema();

@@ -18,12 +18,11 @@ namespace server.Controllers
     [ApiController]
     public class TestRunController : ControllerBase
     {
-        public static IConnectionProvider _fakeConnectionProvider = new RealConnectionProvider("temporaryDatabase");
         private readonly ITestRepository _repository;
 
         public TestRunController()
         {
-            _repository = new TestRepository(_fakeConnectionProvider);
+            _repository = RepositoryFactory.GetTestRepository();
             _repository.EnsureSchema();
         }
 
